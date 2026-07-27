@@ -31,7 +31,7 @@ const config = {
   ],
   author: "Frenssen Wolfran",
   email: "wolfrandelgado@gmail.com",
-  site: process.env.NEXT_PUBLIC_SITE_URL || "https://frenssenwolfran.site",
+  site: process.env.NEXT_PUBLIC_SITE_URL || "https://portafolio-wolfran.vercel.app",
 
   // for github stars button
   githubUsername: "frenssen-wolfran",
