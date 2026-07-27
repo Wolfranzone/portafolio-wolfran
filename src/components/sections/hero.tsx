@@ -43,7 +43,7 @@ const HeroSection = () => {
             Desarrollo soluciones digitales modernas, escalables y de alto rendimiento,
             combinando diseño elegante con arquitecturas robustas. Mi pasion es
             transformar ideas en soluciones digitales que generen impacto real,
-            utilizando tecnologias enfrentando nuevos desafiÂ­os,
+            utilizando tecnologias enfrentando nuevos desafíos,
             aprendiendo continuamente y creando software que aporte valor tanto a
             empresas como a usuarios.
           </p>
