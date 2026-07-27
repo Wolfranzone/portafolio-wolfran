@@ -5,17 +5,19 @@ import { cn } from "@/lib/utils";
 import SectionWrapper from "../ui/section-wrapper";
 import { motion } from "motion/react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Download, Eye } from "lucide-react";
 
 const ExperienceSection = () => {
   return (
     <SectionWrapper
+      id="experience"
       className="flex flex-col items-center justify-center min-h-[120vh] py-20 z-10"
     >
       <div className="w-full max-w-4xl px-4 md:px-8 mx-auto">
         <SectionHeader
           id="experience"
-          title="Experience"
-          desc="My professional journey."
+          title="Experiencia"
+          desc="Mi recorrido profesional."
           className="mb-12 md:mb-20 mt-0"
         />
 
@@ -100,6 +102,30 @@ const ExperienceCard = ({
               );
             })}
           </div>
+          {experience.certificate && (
+            <div className="flex gap-3 pt-2">
+
+              <a
+                href={experience.certificate}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 rounded-xl bg-blue-600 px-4 py-2 text-white hover:bg-blue-700 transition"
+              >
+                <Eye className="h-4 w-4" />
+                Ver certificado
+              </a>
+
+              <a
+                href={experience.certificate}
+                download
+                className="flex items-center gap-2 rounded-xl border border-border px-4 py-2 hover:bg-secondary transition"
+              >
+                <Download className="h-4 w-4" />
+                Descargar
+              </a>
+
+            </div>
+          )}
         </CardContent>
       </Card>
     </motion.div>

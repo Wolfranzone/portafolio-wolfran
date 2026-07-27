@@ -2,152 +2,114 @@ import { cn } from "@/lib/utils";
 import Link from "next/link";
 import React from "react";
 import { Button } from "../ui/button";
-import { File, Github, Linkedin } from "lucide-react";
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipTrigger,
-} from "@/components/ui/tooltip";
-import { usePreloader } from "../preloader";
-import { BlurIn, BoxReveal } from "../reveal-animations";
-import ScrollDownIcon from "../scroll-down-icon";
+import { File, FolderKanban } from "lucide-react";
 import { SiGithub, SiLinkedin, SiX } from "react-icons/si";
 import { config } from "@/data/config";
-
 import SectionWrapper from "../ui/section-wrapper";
 
 const HeroSection = () => {
-  const { isLoading } = usePreloader();
-
   return (
-    <SectionWrapper id="hero" className={cn("relative w-full h-screen")}>
-      <div className="grid md:grid-cols-2">
-        <div
-          className={cn(
-            "h-[calc(100dvh-3rem)] md:h-[calc(100dvh-4rem)] z-[2]",
-            "col-span-1",
-            "flex flex-col justify-start md:justify-center items-center md:items-start",
-            "pt-28 sm:pb-16 md:p-20 lg:p-24 xl:p-28"
-          )}
-        >
-          {!isLoading && (
-            <div className="flex flex-col">
-              <div>
-                <BlurIn delay={0.7}>
-                  <p
-                    className={cn(
-                      "md:self-start mt-4 font-thin text-md text-slate-500 dark:text-zinc-400",
-                      "cursor-default font-display sm:text-xl md:text-xl whitespace-nowrap bg-clip-text "
-                    )}
-                  >
-                    Hi, I am
-                    <br className="md:hidden" />
-                  </p>
-                </BlurIn>
+    <SectionWrapper id="hero" className={cn("relative w-full min-h-[100svh]")}>
+      <div className="grid md:grid-cols-2 items-center h-full">
 
-                <BlurIn delay={1}>
-                  <Tooltip delayDuration={300}>
-                    <TooltipTrigger asChild>
-                      <h1
-                        className={cn(
-                          "-ml-[6px] leading-none font-thin text-transparent text-slate-800 text-left",
-                          "font-thin text-7xl md:text-7xl lg:text-8xl xl:text-9xl",
-                          "cursor-default text-edge-outline font-display "
-                        )}
-                      >
-                        {config.author.split(" ")[0]}
-                        <br className="md:block hiidden" />
-                        {config.author.split(" ")[1]}
-                      </h1>
-                    </TooltipTrigger>
-                    <TooltipContent
-                      side="top"
-                      className="dark:bg-white dark:text-black"
-                    >
-                      theres something waiting for you in devtools
-                    </TooltipContent>
-                  </Tooltip>
-                </BlurIn>
-                {/* <div className="md:block hidden bg-gradient-to-r from-zinc-300/0 via-zinc-300/50 to-zinc-300/0 w-screen h-px animate-fade-right animate-glow" /> */}
-                <BlurIn delay={1.2}>
-                  <p
-                    className={cn(
-                      "md:self-start md:mt-4 font-thin text-md text-slate-500 dark:text-zinc-400",
-                      "cursor-default font-display sm:text-xl md:text-xl whitespace-nowrap bg-clip-text "
-                    )}
-                  >
-                    A Full Stack Web Developer
-                  </p>
-                </BlurIn>
-              </div>
-              <div className="mt-8 flex flex-col gap-3 w-fit">
-                <Link
-                  href={
-                    "https://drive.google.com/file/d/1MTSsUA8V7Po2AsNXT8kZ5sLOpzC8l7qm/view?usp=sharing"
-                  }
-                  target="_blank"
-                  className="flex-1"
-                >
-                  <BoxReveal delay={2} width="100%" >
-                    <Button className="flex items-center gap-2 w-full">
-                      <File size={24} />
-                      <p>Resume</p>
-                    </Button>
-                  </BoxReveal>
-                </Link>
-                <div className="md:self-start flex gap-3">
-                  <Tooltip delayDuration={300}>
-                    <TooltipTrigger asChild>
-                      <Link href={"#contact"}>
-                        <Button
-                          variant={"outline"}
-                          className="block w-full overflow-hidden"
-                        >
-                          Hire Me
-                        </Button>
-                      </Link>
-                    </TooltipTrigger>
-                    <TooltipContent side="bottom">
-                      <p>pls 🥹 🙏</p>
-                    </TooltipContent>
-                  </Tooltip>
-                  <div className="flex items-center h-full gap-2">
-                    <Link
-                      href={config.social.twitter}
-                      target="_blank"
-                    >
-                      <Button variant={"outline"}>
-                        <SiX size={24} />
-                      </Button>
-                    </Link>
-                    <Link
-                      href={config.social.github}
-                      target="_blank"
-                      className="cursor-can-hover"
-                    >
-                      <Button variant={"outline"}>
-                        <SiGithub size={24} />
-                      </Button>
-                    </Link>
-                    <Link
-                      href={config.social.linkedin}
-                      target="_blank"
-                      className="cursor-can-hover"
-                    >
-                      <Button variant={"outline"}>
-                        <SiLinkedin size={24} />
-                      </Button>
-                    </Link>
-                  </div>
-                </div>
-              </div>
+        {/* IZQUIERDA */}
+        <div className="flex flex-col justify-center pt-28 sm:pb-16 md:p-20 lg:p-24 xl:p-28">
+
+          <div className="mb-8 flex justify-center md:hidden">
+            <div className="h-36 w-36 overflow-hidden rounded-3xl border border-zinc-800 bg-zinc-900 shadow-xl">
+              <img
+                src="/Fotoperfil.png"
+                alt="Retrato de Frenssen Wolfran"
+                className="h-full w-full object-cover"
+              />
             </div>
-          )}
+          </div>
+
+          <p className="text-zinc-400 tracking-widest uppercase mb-3">
+            Hola, soy
+          </p>
+
+          <h1 className="text-6xl md:text-8xl font-light leading-none text-white">
+            {config.author.split(" ")[0]}
+            <br />
+            {config.author.split(" ")[1]}
+          </h1>
+
+          <h2 className="mt-6 text-2xl text-blue-400 font-semibold">
+            Ingeniero de Sistemas · Desarrollador Full Stack
+          </h2>
+
+          <p className="mt-8 max-w-xl text-zinc-400 leading-8 text-lg">
+            Desarrollo soluciones digitales modernas, escalables y de alto rendimiento,
+            combinando diseño elegante con arquitecturas robustas. Mi pasion es
+            transformar ideas en soluciones digitales que generen impacto real,
+            utilizando tecnologias enfrentando nuevos desafiÂ­os,
+            aprendiendo continuamente y creando software que aporte valor tanto a
+            empresas como a usuarios.
+          </p>
+
+          <div className="flex gap-4 mt-10">
+
+            <Button size="lg">
+              <a
+                href="/Frenssen-Wolfran-CV.pdf"
+                target="_blank"
+                rel="noopener noreferrer">
+                <File className="mr-2 h-5 w-5" />
+                Ver CV
+              </a>
+            </Button>
+            <Button size="lg" variant="outline" asChild>
+              <Link href="#projects">
+                <FolderKanban className="mr-2 h-5 w-5" />
+                Ver proyectos
+              </Link>
+            </Button>
+
+
+          </div>
+
+          <div className="flex gap-5 mt-8 text-2xl">
+
+            <Link href={config.social.github || "#"}>
+              <SiGithub />
+            </Link>
+
+            <Link href={config.social.linkedin || "#"}>
+              <SiLinkedin />
+            </Link>
+
+            <Link href={config.social.twitter || "#"}>
+              <SiX />
+            </Link>
+
+          </div>
+
         </div>
-        <div className="grid col-span-1"></div>
-      </div>
-      <div className="absolute bottom-10 left-[50%] translate-x-[-50%]">
-        <ScrollDownIcon />
+
+        {/* DERECHA */}
+        <div className="hidden md:flex justify-center items-center">
+
+          <div className="relative">
+
+            {/* Luz de fondo */}
+            <div className="absolute inset-0 blur-3xl bg-blue-500/20 rounded-full scale-125" />
+
+            {/* Marco */}
+            <div className="relative h-[480px] w-[380px] rounded-3xl overflow-hidden border border-zinc-800 bg-zinc-900 shadow-2xl">
+
+              <img
+                src="/Fotoperfil.png"
+                alt="Foto de perfil"
+                className="h-full w-full object-cover"
+              />
+
+            </div>
+
+          </div>
+
+        </div>
+
       </div>
     </SectionWrapper>
   );

@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { Inter, Archivo_Black } from "next/font/google";
 import "./globals.css";
 import { config } from "@/data/config";
 
@@ -24,7 +23,7 @@ export const metadata: Metadata = {
         url: config.ogImg,
         width: 800,
         height: 600,
-        alt: "Portfolio preview",
+        alt: "Vista previa del portafolio",
       },
     ],
     type: "website",
@@ -41,16 +40,6 @@ export const metadata: Metadata = {
   },
 };
 
-const inter = Inter({
-  subsets: ["latin"],
-  variable: "--font-sans",
-});
-
-const archivoBlack = Archivo_Black({
-  subsets: ["latin"],
-  weight: "400",
-  variable: "--font-display",
-});
 
 export default function RootLayout({
   children,
@@ -58,24 +47,27 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={[inter.variable, archivoBlack.variable, "font-display"].join(" ")} suppressHydrationWarning>
+    <html lang="es" className="font-display" suppressHydrationWarning>
       <head>
         {/* The Spline runtime lazy-loads its wasm from unpkg; warm the
             connection early so the 3D scene starts faster. */}
         <link rel="preconnect" href="https://unpkg.com" crossOrigin="anonymous" />
-        <Script
-          defer
-          src={process.env.UMAMI_DOMAIN}
-          data-website-id={process.env.UMAMI_SITE_ID}
-        ></Script>
+        {process.env.UMAMI_DOMAIN && process.env.UMAMI_SITE_ID && (
+          <Script
+            defer
+            src={process.env.UMAMI_DOMAIN}
+            data-website-id={process.env.UMAMI_SITE_ID}
+          />
+        )}
       </head>
       <body>
         <Providers>
-          <Header />
-          {children}
-          <Footer />
-          <AppOverlays />
+            <Header />
+            {children}
+            <Footer />
+            <AppOverlays />
         </Providers>
+
         {process.env.NEXT_PUBLIC_GA_ID && (
           <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_ID} />
         )}

@@ -11,9 +11,9 @@ import { useRouter } from "next/navigation";
 import { z } from "zod";
 
 const formSchema = z.object({
-  fullName: z.string().min(2, "Full name must be at least 2 characters"),
-  email: z.string().email("Please enter a valid email address"),
-  message: z.string().min(10, "Message must be at least 10 characters"),
+  fullName: z.string().min(2, "El nombre completo debe tener al menos 2 caracteres"),
+  email: z.string().email("Ingresa un correo electrónico válido"),
+  message: z.string().min(10, "El mensaje debe tener al menos 10 caracteres"),
 });
 
 type FieldErrors = Partial<Record<keyof z.infer<typeof formSchema>, string>>;
@@ -52,11 +52,11 @@ const ContactForm = () => {
       });
       if (!res.ok) {
         const data = await res.json();
-        throw new Error(data.error || `Request failed (${res.status})`);
+        throw new Error(data.error || `Solicitud fallida (${res.status})`);
       }
       toast({
-        title: "Thank you!",
-        description: "I'll get back to you as soon as possible.",
+        title: "¡Gracias!",
+        description: "Me pondré en contacto contigo lo antes posible.",
         variant: "default",
         className: cn("top-0 mx-auto flex fixed md:top-4 md:right-4"),
       });
@@ -71,7 +71,7 @@ const ContactForm = () => {
     } catch (err) {
       toast({
         title: "Error",
-        description: "Something went wrong! Please try again.",
+        description: "Ocurrió un error. Inténtalo nuevamente.",
         className: cn(
           "top-0 w-full flex justify-center fixed md:max-w-7xl md:top-4 md:right-4"
         ),
@@ -81,13 +81,13 @@ const ContactForm = () => {
     setLoading(false);
   };
   return (
-    <form className="min-w-7xl mx-auto sm:mt-4" onSubmit={handleSubmit} aria-busy={loading}>
-      <div className="flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-2 mb-4">
+    <form className="mx-auto mt-4 w-full max-w-none" onSubmit={handleSubmit} aria-busy={loading}>
+      <div className="mb-4 flex flex-col gap-4 md:flex-row md:gap-2">
         <LabelInputContainer>
-          <Label htmlFor="fullname">Full name</Label>
+          <Label htmlFor="fullname">Nombre completo</Label>
           <Input
             id="fullname"
-            placeholder="Your Name"
+            placeholder="Tu nombre"
             type="text"
             value={fullName}
             onChange={(e) => { setFullName(e.target.value); setErrors((p) => ({ ...p, fullName: undefined })); }}
@@ -95,10 +95,10 @@ const ContactForm = () => {
           {errors.fullName && <p className="text-sm text-red-500">{errors.fullName}</p>}
         </LabelInputContainer>
         <LabelInputContainer className="mb-4">
-          <Label htmlFor="email">Email Address</Label>
+          <Label htmlFor="email">Correo electrónico</Label>
           <Input
             id="email"
-            placeholder="you@example.com"
+            placeholder="tu@correo.com"
             type="email"
             value={email}
             onChange={(e) => { setEmail(e.target.value); setErrors((p) => ({ ...p, email: undefined })); }}
@@ -107,17 +107,16 @@ const ContactForm = () => {
         </LabelInputContainer>
       </div>
       <div className="grid w-full gap-1.5 mb-4">
-        <Label htmlFor="content">Your Message</Label>
+        <Label htmlFor="content">Tu mensaje</Label>
         <Textarea
-          placeholder="Tell me about about your project,"
+          placeholder="Cuéntame sobre tu proyecto o necesidad."
           id="content"
           value={message}
           onChange={(e) => { setMessage(e.target.value); setErrors((p) => ({ ...p, message: undefined })); }}
         />
         {errors.message && <p className="text-sm text-red-500">{errors.message}</p>}
         <p className="text-sm text-muted-foreground">
-          I&apos;ll never share your data with anyone else. Pinky promise!
-        </p>
+          Tus datos solo se usarán para responder a tu mensaje.</p>
       </div>
       <Button
         disabled={loading}
@@ -127,11 +126,11 @@ const ContactForm = () => {
         {loading ? (
           <div className="flex items-center justify-center">
             <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-            <p>Please wait</p>
+            <p>Por favor, espera</p>
           </div>
         ) : (
           <div className="flex items-center justify-center">
-            Send Message <ChevronRight className="w-4 h-4 ml-4" />
+            Enviar mensaje <ChevronRight className="w-4 h-4 ml-4" />
           </div>
         )}
         <BottomGradient />

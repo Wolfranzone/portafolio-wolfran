@@ -1,109 +1,104 @@
 "use client";
-import { useState } from "react";
-import { motion, AnimatePresence } from "motion/react";
+
+import { motion } from "motion/react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import styles from "./style.module.scss";
-import { opacity, background } from "./anim";
-import Nav from "./nav";
 import { cn } from "@/lib/utils";
 import FunnyThemeToggle from "../theme/funny-theme-toggle";
-import { Button } from "../ui/button";
-import { config } from "@/data/config";
-import OnlineUsers from "../realtime/online-users";
-import { GitHubStarsButton } from "../ui/shadcn-io/github-stars-button";
+
+import {
+  Home,
+  Layers3,
+  User,
+  Folder,
+  Mail,
+} from "lucide-react";
 
 interface HeaderProps {
   loader?: boolean;
 }
 
+const navItems = [
+  {
+    title: "Inicio",
+    href: "#hero",
+    icon: Home,
+  },
+  {
+    title: "Habilidades",
+    href: "#skills",
+    icon: Layers3,
+  },
+  {
+    title: "Experiencia",
+    href: "#experience",
+    icon: User,
+  },
+  {
+    title: "Proyectos",
+    href: "#projects",
+    icon: Folder,
+  },
+  {
+    title: "Contacto",
+    href: "#contact",
+    icon: Mail,
+  },
+];
+
 const Header = ({ loader }: HeaderProps) => {
-  const [isActive, setIsActive] = useState<boolean>(false);
-  const isHome = usePathname() === "/";
+  const pathname = usePathname();
+
   return (
     <motion.header
-      className={cn(
-        styles.header,
-        "transition-colors delay-100 duration-500 ease-in z-[1000]"
-      )}
-      style={{
-        background: isActive ? "hsl(var(--background) / .8)" : "transparent",
-        // backgroundImage:
-        //   "linear-gradient(0deg, rgba(0, 0, 0, 0), rgb(0, 0, 0))",
-      }}
-      initial={{
-        y: -80,
-      }}
-      animate={{
-        y: 0,
-      }}
+      className="fixed inset-x-0 top-4 z-[1000] flex justify-center px-2"
+      initial={{ y: -80 }}
+      animate={{ y: 0 }}
       transition={{
-        delay: loader ? 3.5 : 0, // 3.5 for loading, .5 can be added for delay
+        delay: loader ? 3.5 : 0,
         duration: 0.8,
       }}
     >
-      {/* <div
-        className="absolute inset-0 "
-        style={{
-          mask: "linear-gradient(rgb(0, 0, 0) 0%, rgba(0, 0, 0, 0) 12.5%)",
-        }}
-      >
-      </div> */}
-      <div className={cn(styles.bar, "flex items-center justify-between")}>
-        <Link href="/" className="flex items-center justify-center">
-          <Button variant={"link"} className="text-md">
-            {config.author}
-          </Button>
-        </Link>
-
-        <FunnyThemeToggle className="w-6 h-6 mr-4 hidden md:flex" />
-        {isHome && process.env.NEXT_PUBLIC_WS_URL && <OnlineUsers />}
-        {config.githubUsername && config.githubRepo && (
-          <GitHubStarsButton
-            username={config.githubUsername}
-            repo={config.githubRepo}
-            className="mr-4"
-          />
+      <div
+        className={cn(
+          "flex items-center gap-2",
+          "rounded-full",
+          "border border-white/10",
+          "bg-black/60",
+          "backdrop-blur-2xl",
+          "shadow-2xl",
+          "max-w-full px-1.5 py-1.5 sm:px-2 sm:py-2"
         )}
-        <Button
-          variant={"ghost"}
-          onClick={() => setIsActive(!isActive)}
-          aria-label={isActive ? "Close menu" : "Open menu"}
-          aria-expanded={isActive}
-          className={cn(
-            styles.el,
-            "m-0 p-0 h-6 bg-transparent flex items-center justify-center"
-          )}
-        >
-          <div className="relative hidden md:flex items-center">
-            <motion.p
-              variants={opacity}
-              animate={!isActive ? "open" : "closed"}
+      >
+        {navItems.map((item, index) => {
+          const Icon = item.icon;
+
+          return (
+            <Link
+              key={item.title}
+              href={item.href}
+              className={cn(
+                "flex items-center gap-2 rounded-full px-3 py-2 sm:px-5",
+                "transition-all duration-300",
+                "text-zinc-400 hover:text-white",
+                pathname === "/" && item.href === "#hero"
+                  ? "bg-white text-black hover:text-black"
+                  : ""
+              )}
             >
-              Menu
-            </motion.p>
-            <motion.p variants={opacity} animate={isActive ? "open" : "closed"}>
-              Close
-            </motion.p>
-          </div>
-          <div
-            className={`${styles.burger} ${isActive ? styles.burgerActive : ""
-              }`}
-          ></div>
-        </Button>
+              <Icon size={18} />
+              <span className="hidden md:block">
+                {item.title}
+              </span>
+            </Link>
+          );
+        })}
+
+        <div className="ml-1">
+          <FunnyThemeToggle className="w-5 h-5" />
+        </div>
       </div>
-      <motion.div
-        variants={background}
-        initial="initial"
-        animate={isActive ? "open" : "closed"}
-        onClick={() => setIsActive(false)}
-        className={styles.background}
-      ></motion.div>
-      <AnimatePresence mode="wait">
-        {isActive && <Nav setIsActive={setIsActive} />}
-      </AnimatePresence>
     </motion.header>
   );
 };
-
 export default Header;

@@ -40,7 +40,7 @@ const ProjectsLinks = ({ live, repo }: { live: string; repo?: string }) => {
         href={live}
       >
         <Button variant={"default"} size={"sm"}>
-          Visit Website
+          Visitar sitio web
           <ArrowUpRight className="ml-3 w-5 h-5" />
         </Button>
       </Link>
@@ -236,8 +236,120 @@ export type Project = {
 };
 const projects: Project[] = [
   {
+    id: "dashboard-sedacusco",
+    category: "Sistema interno",
+    title: "Dashboard SEDACUSCO",
+    src: "/assets/projects-screenshots/dashboard-sedacusco/dashboard-overview.png",
+    screenshots: ["dashboard-overview.png", "analytics-connections.png", "connection-funnel.png", "operational-kpis.png", "districts-pending.png", "financial-investment.png", "cost-matrix.png", "welcome-upload.png", "report-export.png", "login.png"],
+    live: "",
+    skills: {
+      frontend: [PROJECT_SKILLS.ts, PROJECT_SKILLS.react, PROJECT_SKILLS.tailwind],
+      backend: [PROJECT_SKILLS.node, PROJECT_SKILLS.express, PROJECT_SKILLS.mongo],
+    },
+    content: (
+      <div>
+        <TypographyP className="font-mono text-lg">
+          Dashboard para centralizar y analizar registros de conexiones de agua y desagüe.
+        </TypographyP>
+
+        <TypographyH3 className="my-4 mt-8">Panel ejecutivo</TypographyH3>
+        <p className="font-mono mb-4">
+          Vista consolidada de indicadores, filtros por periodo y métricas clave para el seguimiento de conexiones nuevas.
+        </p>
+        <SlideShow images={[`${BASE_PATH}/dashboard-sedacusco/dashboard-overview.png`, `${BASE_PATH}/dashboard-sedacusco/analytics-connections.png`]} />
+
+        <TypographyH3 className="my-4 mt-8">Proceso y operación</TypographyH3>
+        <p className="font-mono mb-4">
+          Implementé el seguimiento del embudo de conexión, rendimiento de técnicos, distribución por distrito y alertas de solicitudes pendientes.
+        </p>
+        <SlideShow images={[`${BASE_PATH}/dashboard-sedacusco/connection-funnel.png`, `${BASE_PATH}/dashboard-sedacusco/operational-kpis.png`, `${BASE_PATH}/dashboard-sedacusco/districts-pending.png`]} />
+
+        <TypographyH3 className="my-4 mt-8">Análisis financiero</TypographyH3>
+        <p className="font-mono mb-4">
+          El sistema permite revisar inversión, costos promedio y distribución de costos por tipo de matriz para apoyar la toma de decisiones.
+        </p>
+        <SlideShow images={[`${BASE_PATH}/dashboard-sedacusco/financial-investment.png`, `${BASE_PATH}/dashboard-sedacusco/cost-matrix.png`]} />
+
+        <TypographyH3 className="my-4 mt-8">Carga de datos y reportes</TypographyH3>
+        <p className="font-mono mb-4">
+          El flujo permite cargar archivos Excel, procesar la información y generar reportes institucionales listos para descargar en PDF.
+        </p>
+        <SlideShow images={[`${BASE_PATH}/dashboard-sedacusco/welcome-upload.png`, `${BASE_PATH}/dashboard-sedacusco/report-export.png`]} />
+        <TypographyH3 className="my-4 mt-8">Acceso seguro</TypographyH3>
+        <SlideShow images={[`${BASE_PATH}/dashboard-sedacusco/login.png`]} />
+
+        <TypographyH3 className="my-4 mt-8">Tecnologías</TypographyH3>
+        <p className="font-mono mb-4">
+          React, React Router, Material UI, Recharts, Axios, Express, MongoDB/Mongoose, ExcelJS y Multer.
+        </p>
+        <p className="rounded-xl border border-border bg-secondary/30 px-4 py-3 text-sm text-muted-foreground">
+          Demo disponible en entorno local. La versión pública se añadirá próximamente.
+        </p>
+      </div>
+    ),
+  },
+  {
+    id: "inventario-sedacusco",
+    category: "Sistema interno",
+    title: "Inventario de Conexiones – SEDACUSCO",
+    src: "/assets/projects-screenshots/inventario-sedacusco/inventory-dashboard.png",
+    screenshots: ["inventory-dashboard.png", "low-stock-alert.png", "material-entries.png", "available-materials.png", "material-exits.png", "inventory-movements.png", "material-administration.png", "product-catalog.png", "work-materials.png", "user-management.png", "system-audit.png", "system-settings.png", "system-reports.png", "user-dashboard.png", "login-admin.png"],
+    live: "",
+    skills: {
+      frontend: [PROJECT_SKILLS.ts, PROJECT_SKILLS.tailwind],
+      backend: [PROJECT_SKILLS.node, PROJECT_SKILLS.express, PROJECT_SKILLS.mongo],
+    },
+    content: (
+      <div>
+        <TypographyP className="font-mono text-lg">
+          Sistema administrativo para controlar materiales y trabajos de conexiones nuevas en SEDACUSCO.
+        </TypographyP>
+
+        <TypographyH3 className="my-4 mt-8">Dashboard y alertas</TypographyH3>
+        <p className="font-mono mb-4">
+          El perfil administrador dispone de indicadores de stock, entradas, salidas y alertas de materiales críticos para una supervisión inmediata.
+        </p>
+        <SlideShow images={[`${BASE_PATH}/inventario-sedacusco/inventory-dashboard.png`, `${BASE_PATH}/inventario-sedacusco/low-stock-alert.png`]} />
+
+        <TypographyH3 className="my-4 mt-8">Inventario y movimientos</TypographyH3>
+        <p className="font-mono mb-4">
+          Implementé consultas de disponibilidad, entradas y salidas de materiales, registro de movimientos y filtros para el control diario del almacén.
+        </p>
+        <SlideShow images={[`${BASE_PATH}/inventario-sedacusco/available-materials.png`, `${BASE_PATH}/inventario-sedacusco/material-entries.png`, `${BASE_PATH}/inventario-sedacusco/material-exits.png`, `${BASE_PATH}/inventario-sedacusco/inventory-movements.png`]} />
+
+        <TypographyH3 className="my-4 mt-8">Catálogo y materiales por trabajo</TypographyH3>
+        <p className="font-mono mb-4">
+          El sistema administra el catálogo de productos, el alta y edición de materiales y la asignación de insumos por tipo de trabajo.
+        </p>
+        <SlideShow images={[`${BASE_PATH}/inventario-sedacusco/material-administration.png`, `${BASE_PATH}/inventario-sedacusco/product-catalog.png`, `${BASE_PATH}/inventario-sedacusco/work-materials.png`]} />
+
+        <TypographyH3 className="my-4 mt-8">Administración, seguridad y reportes</TypographyH3>
+        <p className="font-mono mb-4">
+          Incluye control de usuarios y roles, auditoría de acciones, configuración operativa y generación de reportes exportables.
+        </p>
+        <SlideShow images={[`${BASE_PATH}/inventario-sedacusco/user-management.png`, `${BASE_PATH}/inventario-sedacusco/system-audit.png`, `${BASE_PATH}/inventario-sedacusco/system-settings.png`, `${BASE_PATH}/inventario-sedacusco/system-reports.png`]} />
+
+        <TypographyH3 className="my-4 mt-8">Vista de usuario</TypographyH3>
+        <p className="font-mono mb-4">
+          El perfil operativo mantiene acceso a indicadores, historial, catálogo e inventario, sin exponer las opciones exclusivas de administración.
+        </p>
+        <SlideShow images={[`${BASE_PATH}/inventario-sedacusco/user-dashboard.png`]} />
+        <TypographyH3 className="my-4 mt-8">Acceso administrativo</TypographyH3>
+        <SlideShow images={[`${BASE_PATH}/inventario-sedacusco/login-admin.png`]} />
+
+        <TypographyH3 className="my-4 mt-8">Tecnologías</TypographyH3>
+        <p className="font-mono mb-4">
+          Angular 19, TypeScript, Tailwind CSS, Node.js, Express, MongoDB, Mongoose, JWT, bcrypt, Chart.js, jsPDF y XLSX.
+        </p>
+        <p className="rounded-xl border border-border bg-secondary/30 px-4 py-3 text-sm text-muted-foreground">
+          Demo disponible en entorno local. La versión pública se añadirá próximamente.
+        </p>
+      </div>
+    )
+  },
+  {
     id: "codingducks",
-    category: "Coding platform",
+    category: "Plataforma de programación",
     title: "Coding Ducks",
     src: "/assets/projects-screenshots/codingducks/landing.png",
     screenshots: ["landing.png"],
@@ -259,24 +371,20 @@ const projects: Project[] = [
       ],
     },
     live: "https://www.codingducks.xyz/",
-    github: "https://github.com/Naresh-Khatri/Coding-Ducks",
+    github: "https://github.com/Frenssen-Wolfran/Coding-Ducks",
     get content() {
       return (
         <div>
           <TypographyP className="font-mono text-2xl text-center">
-            Coding ducks = LeetCode + CodePen + CSS Battles
+            Coding Ducks combina retos de programación, colaboración y creación de interfaces.
           </TypographyP>
           <TypographyP className="font-mono ">
-            Coding Ducks is your coding dojo — where you level up your skills,
-            battle in real-time code duels, and earn badges like a true code
-            warrior. Track your progress, flex your brain, and climb the
-            leaderboard. Ready to quack the code?
+            Plataforma de práctica para fortalecer habilidades de programación y trabajo colaborativo.
           </TypographyP>
           <ProjectsLinks live={this.live} repo={this.github} />
-          <TypographyH3 className="my-4 mt-8">Problems </TypographyH3>
+          <TypographyH3 className="my-4 mt-8">Problemas </TypographyH3>
           <p className="font-mono mb-2">
-            Solve coding problems similar to LeetCode, enhancing your
-            problem-solving skills across various languages.
+            Resuelve desafíos de programación similares a LeetCode y fortalece tus habilidades de lógica en distintos lenguajes.
           </p>
           <SlideShow
             images={[
@@ -286,8 +394,7 @@ const projects: Project[] = [
           />
           <TypographyH3 className="my-4 mt-8">Ducklets</TypographyH3>
           <p className="font-mono mb-2">
-            Collaborate in real-time with others in a multiplayer coding
-            environment, just like CodePen but with a social twist.
+            Colabora en tiempo real con otras personas en un entorno de programación compartido.
           </p>
           <SlideShow
             images={[
@@ -296,11 +403,10 @@ const projects: Project[] = [
               `${BASE_PATH}/codingducks/ducklet2.png`,
             ]}
           />
-          <TypographyH3 className="my-4 mt-8">UI Battles </TypographyH3>
+          <TypographyH3 className="my-4 mt-8">Retos de interfaz </TypographyH3>
 
           <p className="font-mono mb-2">
-            Challenge yourself to create UI components with HTML/CSS/JS, and get
-            instant feedback with an automated similarity scoring.
+            Crea componentes de interfaz con HTML, CSS y JavaScript y recibe una evaluación automática de similitud.
           </p>
           <SlideShow
             images={[
@@ -309,23 +415,20 @@ const projects: Project[] = [
               `${BASE_PATH}/codingducks/css-battle2.png`,
             ]}
           />
-          <TypographyH3 className="my-4 mt-8">Contests </TypographyH3>
+          <TypographyH3 className="my-4 mt-8">Concursos </TypographyH3>
           <p className="font-mono mb-2">
-            Organize or participate in coding competitions. Successfully used to
-            host three contests during college.
+            Organiza o participa en concursos de programación y desafíos técnicos.
           </p>
           <SlideShow images={[`${BASE_PATH}/codingducks/contests.png`]} />
-          <TypographyH3 className="my-4 mt-8">Playground </TypographyH3>
+          <TypographyH3 className="my-4 mt-8">Entorno de pruebas </TypographyH3>
           <p className="font-mono mb-2">
-            Test and execute your code instantly in my versatile online code
-            runner.
+            Prueba y ejecuta código al instante desde un entorno en línea.
           </p>
           <SlideShow images={[`${BASE_PATH}/codingducks/playground.png`]} />
-          <TypographyH3 className="my-4 mt-8">Users</TypographyH3>
+          <TypographyH3 className="my-4 mt-8">Usuarios</TypographyH3>
 
           <p className="font-mono mb-2">
-            Track your progress, earn badges, and climb the rankings with
-            detailed user profiles and activity tracking.
+            Consulta tu progreso, obtén insignias y revisa perfiles con historial de actividad.
           </p>
           <SlideShow
             images={[
@@ -339,7 +442,7 @@ const projects: Project[] = [
   },
   {
     id: "couponluxury",
-    category: "Coupon site",
+    category: "Portal de cupones",
     title: "Coupon Luxury",
     src: "/assets/projects-screenshots/couponluxury/landing.png",
     screenshots: ["1.png", "2.png", "3.png", "4.png", "5.png"],
@@ -363,22 +466,16 @@ const projects: Project[] = [
       return (
         <div>
           <TypographyP className="font-mono ">
-            CouponLuxury is your go-to destination for snagging the best deals
-            without lifting a finger. Whether you&apos;re hunting for the latest
-            discounts or trying to save a buck at your favorite stores,
-            CouponLuxury&apos;s got you covered.
+            Coupon Luxury es una plataforma para descubrir cupones, descuentos y ofertas de distintas tiendas en un solo lugar.
           </TypographyP>
           <ProjectsLinks live={this.live} repo={this.github} />
           <p className="font-mono mb-2 mt-4">
-            As soon as you land, boom! You&apos;re greeted with the freshest
-            coupons and top-tier deals that&apos;ll make your wallet happy.
+            La página principal presenta cupones recientes y ofertas destacadas para encontrar oportunidades rápidamente.
           </p>
           <SlideShow images={[`${BASE_PATH}/couponluxury/landing.png`]} />
-          <TypographyH3 className="my-4 ">Stores</TypographyH3>
+          <TypographyH3 className="my-4 ">Tiendas</TypographyH3>
           <p className="font-mono mb-2">
-            Dive into a comprehensive list of stores, each packed with exclusive
-            deals and discounts. It&apos;s like having a VIP pass to every sale
-            in town.
+            Explora un listado de tiendas con sus ofertas y descuentos disponibles.
           </p>
           <SlideShow
             images={[
@@ -386,19 +483,15 @@ const projects: Project[] = [
               `${BASE_PATH}/couponluxury/store.png`,
             ]}
           />
-          <TypographyH3 className="my-4 mt-8">Categories</TypographyH3>
+          <TypographyH3 className="my-4 mt-8">Categorías</TypographyH3>
 
           <p className="font-mono mb-2">
-            Whatever you&apos;re into—fashion, tech, food—you&apos;ll find it
-            neatly organized here. No more endless scrolling; just pick a
-            category and get the best offers instantly.
+            Las ofertas se organizan por categorías, como moda, tecnología y alimentos, para facilitar la búsqueda.
           </p>
           <SlideShow images={[`${BASE_PATH}/couponluxury/categories.png`]} />
-          <TypographyH3 className="my-4 mt-8">Custom CMS </TypographyH3>
+          <TypographyH3 className="my-4 mt-8">CMS personalizado </TypographyH3>
           <p className="font-mono mb-2">
-            Powered by Vue.js, this bad boy allows us to keep the content
-            dynamic and up-to-date. From flash sales to limited-time offers, my
-            CMS ensures everything&apos;s live and relevant.
+            Incluye un CMS desarrollado con Vue.js para administrar contenido, ofertas y campañas de forma dinámica.
           </p>
           <SlideShow
             images={[
@@ -407,13 +500,10 @@ const projects: Project[] = [
             ]}
           />
           <p className="font-mono mb-2 mt-5">
-            Plus, I&apos;ve sprinkled in some extra magic like personalized
-            deal recommendations, user-friendly search features, and a sleek,
-            responsive design that works like a charm on any device.
+            También incorpora búsqueda, recomendaciones y un diseño adaptable a cualquier dispositivo.
           </p>
           <p className="font-mono mb-2">
-            CouponLuxury isn&apos;t just a website; it&apos;s your personal deal-hunting
-            assistant, ensuring you never miss out on a bargain!
+            El objetivo es simplificar la búsqueda de promociones y ayudar a encontrar mejores oportunidades de compra.
           </p>
           {/* <TypographyP className="my-4 mt-8">
           <strong>Misc:</strong>
@@ -430,7 +520,7 @@ const projects: Project[] = [
   },
   {
     id: "the-booking-desk",
-    category: "Travel",
+    category: "Viajes",
     title: "The Booking Desk",
     src: "/assets/projects-screenshots/the-booking-desk/landing.png",
     screenshots: ["1.png"],
@@ -448,22 +538,16 @@ const projects: Project[] = [
       return (
         <div>
           <TypographyP className="font-mono ">
-            The Booking Desk is your ultimate travel consultation hub, designed
-            to turn your wanderlust dreams into reality. With a focus on smooth
-            and visually captivating animations, navigating the site feels like
-            a breeze—it&apos;s almost as if the destinations are calling you.
+            The Booking Desk es una plataforma de asesoría de viajes creada para descubrir destinos, recomendaciones y experiencias de forma visual.
           </TypographyP>
           <ProjectsLinks live={this.live} repo={this.github} />
           <p className="font-mono mb-2 mt-8">
-            A sleek, modern interface greets you, featuring the latest travel
-            tips, deals, and must-visit spots around the globe.
+            Su interfaz moderna presenta consejos, ofertas y destinos recomendados alrededor del mundo.
           </p>
           <SlideShow images={[`${BASE_PATH}/the-booking-desk/landing.png`]} />
-          <TypographyH3 className="my-4 mt-8">Blogs</TypographyH3>
+          <TypographyH3 className="my-4 mt-8">Artículos de viaje</TypographyH3>
           <p className="font-mono mb-2">
-            Dive into the curated articles written by travel experts. Whether
-            you&apos;re looking for hidden gems or travel hacks, our blog section has
-            you covered.
+            La sección reúne artículos seleccionados con recomendaciones, rutas y consejos para planificar viajes.
           </p>
           <SlideShow
             images={[
@@ -474,9 +558,7 @@ const projects: Project[] = [
           <TypographyH3 className="my-4 mt-8">Sanity CMS</TypographyH3>
 
           <p className="font-mono mb-2">
-            Keeping everything fresh and up-to-date, I&apos;ve integrated Sanity CMS
-            to manage all the content with ease, ensuring you always get the
-            latest and greatest information.
+            Integré Sanity CMS para administrar los contenidos y mantener la información actualizada con facilidad.
           </p>
           <SlideShow
             images={[
@@ -485,214 +567,8 @@ const projects: Project[] = [
             ]}
           />
           <p className="font-mono mb-2 my-8">
-            With a stunning 100% score on Lighthouse, The Booking Desk isn&apos;t
-            just beautiful—it&apos;s built to perform. Whether you&apos;re planning your
-            next adventure or just daydreaming, our site delivers a top-notch
-            experience that&apos;s both informative and enjoyable.
+            El proyecto prioriza rendimiento, accesibilidad y una experiencia visual clara para explorar y planificar viajes.
           </p>
-        </div>
-      );
-    },
-  },
-  {
-    id: "portfolio",
-    category: "Portfolio",
-    title: "My Portfolio",
-    src: "/assets/projects-screenshots/portfolio/landing.png",
-    screenshots: ["1.png"],
-    live: "http://nareshkhatri.vercel.app",
-    github:"https://github.com/Naresh-Khatri/Portfolio",
-    skills: {
-      frontend: [
-        PROJECT_SKILLS.ts,
-        PROJECT_SKILLS.next,
-        PROJECT_SKILLS.shadcn,
-        PROJECT_SKILLS.aceternity,
-        PROJECT_SKILLS.framerMotion,
-        PROJECT_SKILLS.tailwind,
-        PROJECT_SKILLS.spline,
-      ],
-      backend: [],
-    },
-    get content() {
-      return (
-        <div>
-          <TypographyP className="font-mono ">
-            Welcome to my digital playground, where creativity meets code in the
-            dopest way possible.
-          </TypographyP>
-          <ProjectsLinks live={this.live} repo={this.github} />
-          <TypographyH3 className="my-4 mt-8">
-            Beautiful 3D Objects{" "}
-          </TypographyH3>
-          <p className="font-mono mb-2">
-            Did you see that 3D keyboard modal? Yeah! I made that. That
-            interactive keyboard is being rendered in 3D on a webpage 🤯, and
-            pressing each keycap reveals a skill in a goofy way. It&apos;s like
-            typing, but make it art.
-          </p>
-          <SlideShow
-            images={[
-              `${BASE_PATH}/portfolio/landing.png`,
-              `${BASE_PATH}/portfolio/skills.png`,
-            ]}
-          />
-          <TypographyH3 className="my-4 ">Space Theme</TypographyH3>
-          <p className="font-mono mb-2">
-            Dark background + floating particles = out-of-this-world cool.
-          </p>
-          <SlideShow images={[`${BASE_PATH}/portfolio/navbar.png`]} />
-          <TypographyH3 className="my-4 mt-8">Projects</TypographyH3>
-
-          <p className="font-mono mb-2">
-            My top personal and freelance projects — no filler, all killer.
-          </p>
-          <SlideShow
-            images={[
-              `${BASE_PATH}/portfolio/projects.png`,
-              `${BASE_PATH}/portfolio/project.png`,
-            ]}
-          />
-          <p className="font-mono mb-2 mt-8 text-center">
-            This site&apos;s not just a portfolio — it&apos;s a whole vibe.
-          </p>
-        </div>
-      );
-    },
-  },
-  {
-    id: "ghostchat",
-    category: "Anonymous chat",
-    title: "GhostChat",
-    src: "/assets/projects-screenshots/ghostchat/1.png",
-    screenshots: ["1.png", "2.png", "3.png", "4.png"],
-    live: "https://ghostchat.vercel.app",
-    github:"https://github.com/Naresh-Khatri/GhostChat",
-    skills: {
-      frontend: [PROJECT_SKILLS.js, PROJECT_SKILLS.next, PROJECT_SKILLS.chakra],
-      backend: [PROJECT_SKILLS.supabase],
-    },
-    get content() {
-      return (
-        <div>
-          <TypographyP className="font-mono ">
-            Ghostchat is your go-to spot for sending anonymous messages without
-            leaving a trace. Powered by Supabase, it&apos;s all about keeping things
-            low-key and secure. Whether you&apos;re sharing secrets, giving feedback,
-            or just having some fun, Ghostchat ensures your identity stays
-            hidden, while your voice is heard. Say what you want, without the
-            worry.
-          </TypographyP>
-          <ProjectsLinks live={this.live} repo={this.github} />
-          <SlideShow
-            images={[
-              `${BASE_PATH}/ghostchat/1.png`,
-              `${BASE_PATH}/ghostchat/2.png`,
-              `${BASE_PATH}/ghostchat/3.png`,
-              `${BASE_PATH}/ghostchat/4.png`,
-            ]}
-          />
-        </div>
-      );
-    },
-  },
-  {
-    id: "jra",
-    category: "Result analyzer",
-    title: "JNTUA Results Analyzer",
-    src: "/assets/projects-screenshots/jra/1.png",
-    screenshots: ["1.png"],
-    live: "https://naresh-khatri.github.io/JNTUA-result-analyser-spa/#/",
-    skills: {
-      frontend: [PROJECT_SKILLS.js, PROJECT_SKILLS.vue],
-      backend: [
-        PROJECT_SKILLS.node,
-        PROJECT_SKILLS.mongo,
-        PROJECT_SKILLS.express,
-        PROJECT_SKILLS.docker,
-      ],
-    },
-    get content() {
-      return (
-        <div>
-          <TypographyP className="font-mono ">
-            JNTUA Results Analyzer was a revolutionary tool designed to simplify
-            and enhance the experience of accessing academic results. It served
-            as a powerful proxy between the JNTUA university results website and
-            its users, offering a range of features that made result analysis
-            faster and more efficient. Here&apos;s what made it stand out:
-          </TypographyP>
-          <ProjectsLinks live={this.live} repo={this.github} />
-          <SlideShow images={[`${BASE_PATH}/jra/1.png`]} />
-          <TypographyH3 className="my-4 mt-8">
-            Effortless Results Retrieval
-          </TypographyH3>
-          {/* Effortless Results Retrieval: */}
-          <ul className="list-disc ml-6">
-            <li className="font-mono">
-              Search all your results using a single roll number, eliminating
-              the tedious task of sifting through thousands of rows on the
-              official site.
-            </li>
-          </ul>
-          <TypographyH3 className="my-4 mt-8">Class-Wise Results:</TypographyH3>
-          <ul className="list-disc ml-6">
-            <li className="font-mono">
-              class-wise results effortlessly by entering a roll number range.
-              No more manual searches or filtering.
-            </li>
-          </ul>
-          <TypographyH3 className="my-4 mt-8">Faculty Features:</TypographyH3>
-          <ul className="list-disc ml-6">
-            <li className="font-mono">
-              Faculty members could download batch results in Excel format,
-              making administrative tasks a breeze.
-            </li>
-          </ul>
-          <TypographyH3 className="my-4 mt-8">
-            Enhanced Data Insights:
-          </TypographyH3>
-          <ul className="list-disc ml-6">
-            <li className="font-mono">
-              Each result came with additional features including:
-              <ul className="list-disc font-mono ml-6">
-                <li>
-                  <strong>CGPA Calculations: </strong>Easily track your
-                  cumulative grade point average.
-                </li>
-                <li>
-                  <strong>Charts:</strong> Visualize your academic performance
-                  with comprehensive charts.
-                </li>
-                <li>
-                  <strong>Future Projections:</strong> Get insights into
-                  potential future outcomes based on current performance.
-                </li>
-                <li>
-                  <strong> Backlog Counts: </strong>Keep track of your backlog
-                  subjects at a glance.
-                </li>
-              </ul>
-            </li>
-          </ul>
-          <TypographyH3 className="my-4 mt-8">Performance:</TypographyH3>
-          <ul className="list-disc ml-6">
-            <li className="font-mono">
-              The application was significantly faster and more efficient than
-              the official site, providing a smoother user experience.
-            </li>
-          </ul>
-          <TypographyH3 className="my-4 mt-8">Downfall:</TypographyH3>
-          <ul className="list-disc ml-6">
-            <li className="font-mono">
-              Unfortunately, as of May 2022, the tool stopped working due to the
-              introduction of CAPTCHA on the official JNTUA results site, which
-              disrupted the seamless functionality of the app. JNTUA Results
-              Analyzer transformed the way students and faculty interacted with
-              academic results, making it a must-have tool until its unexpected
-              shutdown.
-            </li>
-          </ul>
         </div>
       );
     },

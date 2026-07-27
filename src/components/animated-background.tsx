@@ -16,7 +16,7 @@ import { usePerfProfile } from "@/hooks/use-perf-profile";
 gsap.registerPlugin(ScrollTrigger);
 
 const KeyboardScene = ({ maxDpr }: { maxDpr: number }) => {
-  const { isLoading, bypassLoading } = usePreloader();
+  const { isLoading } = usePreloader();
   const { theme } = useTheme();
   const isMobile = useMediaQuery("(max-width: 767px)");
   const splineContainer = useRef<HTMLDivElement>(null);
@@ -466,7 +466,6 @@ const KeyboardScene = ({ maxDpr }: { maxDpr: number }) => {
         ref={splineContainer}
         onLoad={(app: Application) => {
           setSplineApp(app);
-          bypassLoading();
         }}
         scene="/assets/skills-keyboard.spline"
       />

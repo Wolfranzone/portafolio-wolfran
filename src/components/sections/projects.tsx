@@ -19,9 +19,9 @@ import SectionWrapper from "../ui/section-wrapper";
 
 const ProjectsSection = () => {
   return (
-    <SectionWrapper id="projects" className="max-w-7xl mx-auto md:h-[130vh]">
-      <SectionHeader id="projects" title="Projects" />
-      <div className="grid grid-cols-1 md:grid-cols-3">
+    <SectionWrapper id="projects" className="max-w-7xl mx-auto py-20">
+      <SectionHeader id="projects" title="Proyectos" />
+      <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
         {projects.map((project) => (
           <ProjectCard key={project.id} project={project} />
         ))}
@@ -39,13 +39,25 @@ const ProjectCard = ({ project }: { project: Project }) => {
             className="relative w-[400px] h-auto rounded-lg overflow-hidden"
             style={{ aspectRatio: "3/2" }}
           >
-            <Image
-              className="absolute w-full h-full top-0 left-0 hover:scale-[1.05] transition-all"
-              src={project.src}
-              alt={project.title}
-              width={300}
-              height={300}
-            />
+            {project.src ? (
+              <Image
+                className="absolute w-full h-full top-0 left-0 hover:scale-[1.05] transition-all"
+                src={project.src}
+                alt={project.title}
+                width={300}
+                height={300}
+              />
+            ) : (
+              <div className="absolute inset-0 flex flex-col justify-between bg-gradient-to-br from-sky-950 via-slate-900 to-cyan-950 p-7 text-left">
+                <span className="w-fit rounded-full border border-cyan-300/30 bg-cyan-300/10 px-3 py-1 text-[10px] font-semibold tracking-[0.2em] text-cyan-100">
+                  SEDACUSCO
+                </span>
+                <div>
+                  <p className="mb-2 text-xs uppercase tracking-[0.18em] text-cyan-200/70">Sistema interno</p>
+                  <h3 className="font-display text-2xl font-bold text-white">{project.title}</h3>
+                </div>
+              </div>
+            )}
             <div className="absolute w-full h-1/2 bottom-0 left-0 bg-gradient-to-t from-background via-background/85 to-transparent pointer-events-none">
               <div className="flex flex-col h-full items-start justify-end p-6">
                 <div className="text-lg text-left">{project.title}</div>
@@ -76,15 +88,19 @@ const ProjectCard = ({ project }: { project: Project }) => {
                     target="_blank"
                     className="text-xs text-muted-foreground hover:text-foreground transition-colors underline underline-offset-2"
                   >
-                    Source
+                    Código fuente
                   </Link>
                 )}
-                <Link href={project.live} target="_blank">
-                  <button className="group flex items-center gap-2 bg-primary text-primary-foreground text-sm font-medium px-4 py-1.5 rounded-full hover:bg-primary/80 transition-colors">
-                    Visit
-                    <ArrowUpRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-                  </button>
-                </Link>
+                {project.live ? (
+                  <Link href={project.live} target="_blank">
+                    <button className="group flex items-center gap-2 bg-primary text-primary-foreground text-sm font-medium px-4 py-1.5 rounded-full hover:bg-primary/80 transition-colors">
+                      Visitar
+                      <ArrowUpRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                    </button>
+                  </Link>
+                ) : (
+                  <span className="text-xs text-muted-foreground">Demo privada</span>
+                )}
               </div>
             </div>
           </div>
@@ -102,7 +118,7 @@ const ProjectCard = ({ project }: { project: Project }) => {
                 {project.skills.frontend?.length > 0 && (
                   <div className="flex flex-col items-center md:items-start gap-2">
                     <span className="text-[10px] uppercase tracking-[0.2em] text-muted-foreground font-medium">
-                      Frontend
+                      Interfaz
                     </span>
                     <FloatingDock items={project.skills.frontend} />
                   </div>
@@ -110,7 +126,7 @@ const ProjectCard = ({ project }: { project: Project }) => {
                 {project.skills.backend?.length > 0 && (
                   <div className="flex flex-col items-center md:items-start gap-2">
                     <span className="text-[10px] uppercase tracking-[0.2em] text-muted-foreground font-medium">
-                      Backend
+                      Servidor
                     </span>
                     <FloatingDock items={project.skills.backend} />
                   </div>

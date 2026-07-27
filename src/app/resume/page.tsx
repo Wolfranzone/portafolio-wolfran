@@ -1,9 +1,8 @@
 import ResumeView from "./resume-view";
 
 export const metadata = {
-  title: "Résumé | Naresh Khatri",
-  description:
-    "Résumé of Naresh Khatri — Senior Full-Stack Engineer. View online or download the PDF.",
+  title: "Currículum vitae | Frenssen Wolfran",
+  description: "Currículum vitae de Frenssen Wolfran. Consulta o descarga el documento en PDF.",
 };
 
 export default function ResumePage() {
