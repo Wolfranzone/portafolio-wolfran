@@ -1,5 +1,5 @@
 // @ts-ignore
-import { Splide, SplideSlide, SplideTrack } from "@splidejs/react-splide";
+import { Splide, SplideSlide } from "@splidejs/react-splide";
 import { motion } from "motion/react";
 
 import "@splidejs/react-splide/css";
@@ -7,83 +7,84 @@ import "@splidejs/react-splide/css";
 import Image from "next/image";
 import {
   Dialog,
-  DialogClose,
   DialogContent,
   DialogDescription,
   DialogHeader,
   DialogTitle,
-  DialogTrigger,
 } from "./ui/dialog";
 import { useState } from "react";
 
 const SlideShow = ({ images }: { images: string[] }) => {
-  const [selectedImage, setSelectedImage] = useState('')
+  const [selectedImage, setSelectedImage] = useState("");
+  const multipleImages = images.length > 1;
+
   return (
     <>
       <Splide
         options={{
-          autoplay: "true",
+          autoplay: false,
           perPage: 1,
           start: 0,
           rewind: true,
-          padding: { left: "3rem", right: "3rem" },
-          gap: "1rem",
+          arrows: multipleImages,
+          pagination: multipleImages,
+          drag: true,
+          i18n: {
+            prev: "Imagen anterior",
+            next: "Imagen siguiente",
+            first: "Ir a la primera imagen",
+            last: "Ir a la última imagen",
+            slideX: "Ir a la imagen %s",
+          },
         }}
-        hasTrack={false}
       >
-        <SplideTrack>
-          {images.map((image, idx) => (
-            <SplideSlide key={idx} className="flex items-center">
-              <motion.button
-                className="relative block w-full cursor-zoom-in"
-                onClick={() => { setSelectedImage(image) }}
-              //layout animation
+        {images.map((image, idx) => (
+          <SplideSlide key={idx} className="flex items-center">
+            <motion.button
+              className="relative block w-full cursor-zoom-in"
+              onClick={() => setSelectedImage(image)}
+            >
+              <Image
+                src={image}
+                alt={`Captura ${idx + 1} de ${images.length}`}
+                width={1000}
+                height={1000}
+                className="h-auto w-full rounded-lg"
+              />
+              <motion.div
+                className="absolute inset-0 flex items-center justify-center rounded-lg bg-black/40 text-sm text-white/90 backdrop-blur-[2px]"
+                variants={{ idle: { opacity: 0 }, hover: { opacity: 1 } }}
+                transition={{ duration: 0.2 }}
               >
-                <Image
-                  src={image}
-                  alt="screenshot"
-                  width={1000}
-                  height={1000}
-                  className="w-full rounded-lg h-auto"
-                />
-                <motion.div
-                  className="absolute inset-0 flex items-center justify-center rounded-lg bg-black/40 text-white/90 text-sm backdrop-blur-[2px]"
-                  variants={{
-                    idle: { opacity: 0 },
-                    hover: { opacity: 1 },
-                  }}
-                  transition={{ duration: 0.2 }}
-                >
-                  Click to zoom
-                </motion.div>
-              </motion.button>
-            </SplideSlide>
-          ))}
-        </SplideTrack>
-        <div className="splide__progress">
-          <div className="splide__progress__bar"></div>
-        </div>
+                Toca para ampliar
+              </motion.div>
+            </motion.button>
+          </SplideSlide>
+        ))}
       </Splide>
-      <Dialog open={!!selectedImage} onOpenChange={() => setSelectedImage('')}>
-        <DialogContent className="max-w-[90vw] max-h-[90vh] p-0 border-none bg-transparent"
-          onClick={() => setSelectedImage('')} >
+
+      <Dialog open={!!selectedImage} onOpenChange={() => setSelectedImage("")}>
+        <DialogContent
+          className="max-h-[90vh] max-w-[90vw] border-none bg-transparent p-0"
+          onClick={() => setSelectedImage("")}
+        >
           <DialogHeader className="sr-only">
-            <DialogTitle>Screenshot</DialogTitle>
-            <DialogDescription>Zoomed screenshot</DialogDescription>
+            <DialogTitle>Captura ampliada</DialogTitle>
+            <DialogDescription>Vista ampliada de la captura del proyecto</DialogDescription>
           </DialogHeader>
           <motion.div>
             <Image
-              src={selectedImage || ''}
-              alt="screenshot"
+              src={selectedImage || ""}
+              alt="Captura ampliada"
               width={1080}
               height={1080}
-              className="w-full rounded-lg h-auto max-h-[90vh]"
+              className="max-h-[90vh] w-full rounded-lg"
             />
           </motion.div>
         </DialogContent>
       </Dialog>
     </>
-
   );
 };
+
 export default SlideShow;
