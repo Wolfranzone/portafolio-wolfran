@@ -36,7 +36,7 @@ const ProjectCard = ({ project }: { project: Project }) => {
       <ResponsiveDialog>
         <ResponsiveDialogTrigger className="bg-transparent flex justify-center">
           <div
-            className="relative w-[400px] h-auto rounded-lg overflow-hidden"
+            className="relative h-auto w-full max-w-[400px] rounded-lg overflow-hidden"
             style={{ aspectRatio: "3/2" }}
           >
             {project.src ? (

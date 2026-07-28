@@ -78,7 +78,7 @@ const Header = ({ loader }: HeaderProps) => {
               key={item.title}
               href={item.href}
               className={cn(
-                "flex items-center gap-2 rounded-full px-3 py-2 sm:px-5",
+                "flex h-11 w-11 items-center justify-center rounded-full p-0 sm:h-auto sm:w-auto sm:gap-2 sm:px-5 sm:py-2",
                 "transition-all duration-300",
                 "text-zinc-400 hover:text-white",
                 pathname === "/" && item.href === "#hero"

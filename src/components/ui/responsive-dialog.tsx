@@ -1,6 +1,7 @@
 "use client";
 
 import * as React from "react";
+import { X } from "lucide-react";
 import { useMediaQuery } from "@/hooks/use-media-query";
 import {
   Dialog,
@@ -88,6 +89,9 @@ function ResponsiveDialogContent({
 
   return (
     <DrawerContent className={className}>
+      <DrawerClose aria-label="Cerrar detalle del proyecto" className="absolute right-3 top-3 z-10 inline-flex h-10 w-10 items-center justify-center rounded-full border border-border bg-background/95 text-foreground shadow-sm transition-colors hover:bg-secondary">
+        <X className="h-4 w-4" />
+      </DrawerClose>
       <ScrollArea className="max-h-[85vh] px-4 pb-4 overflow-y-auto!" data-lenis-prevent>{children}</ScrollArea>
     </DrawerContent>
   );

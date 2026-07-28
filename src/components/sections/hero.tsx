@@ -3,17 +3,17 @@ import Link from "next/link";
 import React from "react";
 import { Button } from "../ui/button";
 import { File, FolderKanban } from "lucide-react";
-import { SiGithub, SiLinkedin, SiX } from "react-icons/si";
+import { SiGithub, SiLinkedin } from "react-icons/si";
 import { config } from "@/data/config";
 import SectionWrapper from "../ui/section-wrapper";
 
 const HeroSection = () => {
   return (
     <SectionWrapper id="hero" className={cn("relative w-full min-h-[100svh]")}>
-      <div className="grid md:grid-cols-2 items-center h-full">
+      <div className="grid h-full md:grid-cols-2 items-center">
 
         {/* IZQUIERDA */}
-        <div className="flex flex-col justify-center pt-28 sm:pb-16 md:p-20 lg:p-24 xl:p-28">
+        <div className="flex flex-col justify-center px-5 pt-28 pb-16 sm:px-8 md:p-20 lg:p-24 xl:p-28">
 
           <div className="mb-8 flex justify-center md:hidden">
             <div className="h-36 w-36 overflow-hidden rounded-3xl border border-zinc-800 bg-zinc-900 shadow-xl">
@@ -48,9 +48,9 @@ const HeroSection = () => {
             empresas como a usuarios.
           </p>
 
-          <div className="flex gap-4 mt-10">
+          <div className="flex flex-wrap gap-4 mt-10">
 
-            <Button size="lg">
+            <Button size="lg" asChild>
               <a
                 href="/Frenssen-Wolfran-CV.pdf"
                 target="_blank"
@@ -78,12 +78,7 @@ const HeroSection = () => {
             <Link href={config.social.linkedin || "#"}>
               <SiLinkedin />
             </Link>
-
-            <Link href={config.social.twitter || "#"}>
-              <SiX />
-            </Link>
-
-          </div>
+</div>
 
         </div>
 
