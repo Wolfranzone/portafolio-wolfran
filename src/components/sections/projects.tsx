@@ -32,9 +32,9 @@ const ProjectsSection = () => {
 
 const ProjectCard = ({ project }: { project: Project }) => {
   return (
-    <div className="flex items-center justify-center">
+    <div className="flex w-full items-center justify-center">
       <ResponsiveDialog>
-        <ResponsiveDialogTrigger className="bg-transparent flex justify-center">
+        <ResponsiveDialogTrigger className="flex w-full justify-center bg-transparent">
           <div
             className="relative h-auto w-full max-w-[400px] rounded-lg overflow-hidden"
             style={{ aspectRatio: "3/2" }}
